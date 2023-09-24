@@ -1,0 +1,21 @@
+.navbar {
+    width: 100%;
+    height: 10vh;
+    display: inline-flex;
+    background-color: rgb(254,239,195);
+}
+
+.img{
+    margin: 10px 0 0 10px;
+}
+
+.heading{
+    font-size: x-large;
+    font-weight: 500;
+    margin-left: 1rem;
+    color: rgba(120, 118, 118, 0.927);
+}
+ .navbar:hover{
+    cursor: pointer;
+    background-color: rgb(244, 231, 191);
+ }
