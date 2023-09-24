@@ -20,10 +20,6 @@
     font-size: medium;
 }
 
-.textarea[type]{
-    font-size: medium;
-}
-
 .textarea{
     height: 60px;
     overflow: hidden;
