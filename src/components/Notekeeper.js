@@ -1,43 +1,69 @@
-import styles from "../styling/NoteKeeper.module.css";
-
+import { useRef, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faCirclePlus} from "@fortawesome/free-solid-svg-icons"
 
+import styles from "../styling/NoteKeeper.module.css";
+
 const NoteKeeper = () => {
+    // const [isVisible, setVisible] = useState();
+    const titleRef = useRef();
+    const taglineRef = useRef();
+    const inputRef = useRef();
+
+    // const handleChange = () => {
+    //     setVisible((current) => !current);
+    //     console.log(isVisible)
+    // }
+
+    const clearFormInput = () =>{
+        titleRef.current.value = "";
+        taglineRef.current.value = "";
+        inputRef.current.value = "";
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const titleValue = titleRef.current.value;
+        const taglineValue = taglineRef.current.value;
+        const inputValue = inputRef.current.value
+
+        const noteDetails = {
+            title : titleValue,
+            tagline : taglineValue,
+            input : inputValue
+        }
+        console.log(noteDetails);
+        clearFormInput();
+    }
+
     return(
-        <>
-            <form className={styles.form}>
-                <input 
-                    type="text"
-                    placeholder="Take a note..."
-                    className={styles.input}
-                    style={{margin: 0}}
-                />
-                <button className={styles.submit}> <FontAwesomeIcon icon={faCirclePlus} /> </button>
-            </form>
-            <form className={styles.form}>
+        <div>
+            <form className={styles.form} onSubmit={handleSubmit}>
                 <input 
                     type="text"
                     placeholder="Title"
                     className={styles.input}
+                    ref={titleRef}
                 />
                 <input
                     type="text"
                     placeholder="Tagline"
                     className={styles.input}
                     style={{marginTop: 5}}
+                    ref={taglineRef}
                 />
                 <textarea
+                    name="content"
                     maxLength={100}
-                    rows={30}
-                    cols={33}
                     placeholder="Take a note..."
                     className={styles.textarea}
+                    ref={inputRef}
                     style={{marginTop: 5}}
                 />
-                <button className={styles.submit} style={{top: 150}}> <FontAwesomeIcon icon={faCirclePlus}/> </button>
+                <button className={styles.submit}> <FontAwesomeIcon icon={faCirclePlus} /> </button>
             </form>
-        </>
+            
+        </div>
     )
 }
 
