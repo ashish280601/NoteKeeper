@@ -10,7 +10,7 @@ const Navbar = () => {
         height={50}
         className={styles.img}
       />
-      <p className={styles.heading}>Keep</p>
+      <p className={styles.heading}>Note Keeper</p>
     </div>
   );
 };
