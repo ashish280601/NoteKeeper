@@ -4,7 +4,6 @@
     margin:  50px auto;
     padding: 5px 5px 25px;
     border-radius: 10px;
-    position: relative;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
 }
 
@@ -35,11 +34,12 @@
 
 .submit{
     top: 149px;
-    left: 85%;
+    left: 60%;
 }
 
 .pinned{
-    left: 90%;
+    top: 1%;
+    left: 63%;
 }
 
 .submit:hover, .pinned:hover{

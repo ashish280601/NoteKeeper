@@ -1,9 +1,9 @@
 import NoteItems from "./NoteItems";
-
+import styles from "../styling/NoteList.module.css";
 
 const NoteList = ({notes, delNote}) => {
   return (
-    <div style={{ width: "75%", height: "auto", margin: "auto" }}>
+    <div className={styles.list}>
       {
         notes.map((note, id) => {
             return(

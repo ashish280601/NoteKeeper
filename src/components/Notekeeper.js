@@ -38,9 +38,9 @@ const NoteKeeper = ({addNotes}) => {
     }
 
     return(
-        <div>
+        <div style={{position:"relative"}}>
+            <button className={styles.pinned}> <FontAwesomeIcon icon={faThumbtack} /> </button>
             <form className={styles.form} onSubmit={handleSubmit}>
-                <button className={styles.pinned}> <FontAwesomeIcon icon={faThumbtack} /> </button>
                 <input 
                     type="text"
                     placeholder="Title"
@@ -56,6 +56,7 @@ const NoteKeeper = ({addNotes}) => {
                 />
                 <textarea
                     name="content"
+                    required
                     maxLength={100}
                     placeholder="Take a note..."
                     className={styles.textarea}
