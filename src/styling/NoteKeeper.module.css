@@ -3,7 +3,6 @@
     height: auto;
     margin:  50px auto;
     padding: 5px 5px 25px;
-    background-color: #fff;
     border-radius: 10px;
     position: relative;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
@@ -24,7 +23,7 @@
     resize: none;
 }
 
-.submit{
+.submit, .pinned{
     width: 0;
     height: 0;
     border: none;
@@ -32,11 +31,18 @@
     color: gray;
     background-color: #fff;
     position: absolute;
+}
+
+.submit{
     top: 149px;
     left: 85%;
 }
 
-.submit:hover{
+.pinned{
+    left: 90%;
+}
+
+.submit:hover, .pinned:hover{
     color: rgb(115, 114, 114);
     cursor: pointer;
 }

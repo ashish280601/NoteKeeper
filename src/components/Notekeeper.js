@@ -1,10 +1,10 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faCirclePlus} from "@fortawesome/free-solid-svg-icons"
+import {faCirclePlus, faThumbtack} from "@fortawesome/free-solid-svg-icons"
 
 import styles from "../styling/NoteKeeper.module.css";
 
-const NoteKeeper = () => {
+const NoteKeeper = ({addNotes}) => {
     // const [isVisible, setVisible] = useState();
     const titleRef = useRef();
     const taglineRef = useRef();
@@ -30,15 +30,17 @@ const NoteKeeper = () => {
         const noteDetails = {
             title : titleValue,
             tagline : taglineValue,
-            input : inputValue
+            input : inputValue,
+            id : new Date().getTime(),
         }
-        console.log(noteDetails);
         clearFormInput();
+        addNotes(noteDetails);
     }
 
     return(
         <div>
             <form className={styles.form} onSubmit={handleSubmit}>
+                <button className={styles.pinned}> <FontAwesomeIcon icon={faThumbtack} /> </button>
                 <input 
                     type="text"
                     placeholder="Title"
