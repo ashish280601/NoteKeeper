@@ -1,19 +1,28 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faCirclePlus, faThumbtack} from "@fortawesome/free-solid-svg-icons"
 
 import styles from "../styling/NoteKeeper.module.css";
+import NoteItems from "./NoteItems";
 
-const NoteKeeper = ({addNotes}) => {
-    // const [isVisible, setVisible] = useState();
+const NoteKeeper = ({
+    addNotes,
+    notesToUpdate,
+    updateNotes,
+    resetNotesToUpdate
+}) => {
+    
     const titleRef = useRef();
     const taglineRef = useRef();
     const inputRef = useRef();
 
-    // const handleChange = () => {
-    //     setVisible((current) => !current);
-    //     console.log(isVisible)
-    // }
+    useEffect(() => {
+        if (!notesToUpdate) return;
+        titleRef.current.value = notesToUpdate.title;
+        taglineRef.current.value = notesToUpdate.tagline;
+        inputRef.current.value = notesToUpdate.input;
+
+    }, [notesToUpdate]);
 
     const clearFormInput = () =>{
         titleRef.current.value = "";
@@ -27,15 +36,31 @@ const NoteKeeper = ({addNotes}) => {
         const taglineValue = taglineRef.current.value;
         const inputValue = inputRef.current.value
 
-        const noteDetails = {
-            title : titleValue,
-            tagline : taglineValue,
-            input : inputValue,
-            id : new Date().getTime(),
+        if(!notesToUpdate) {
+            const noteDetails = {
+                title: titleValue,
+                tagline: taglineValue,
+                input: inputValue,
+                // time: new getHo().getMin(),
+                id: new Date().getTime(),
+            };
+            addNotes(noteDetails);
+            clearFormInput();
+            return;
         }
+
+        const noteDetails = {
+            title: titleValue,
+            tagline: taglineValue,
+            input: inputValue,
+            id: notesToUpdate.id
+        };
+
+        const result = updateNotes(noteDetails);
+        if(!result) return;
         clearFormInput();
-        addNotes(noteDetails);
-    }
+        resetNotesToUpdate();
+    };
 
     return(
         <div style={{position:"relative"}}>
@@ -46,12 +71,13 @@ const NoteKeeper = ({addNotes}) => {
                     placeholder="Title"
                     className={styles.input}
                     ref={titleRef}
+                    style={{fontWeight:700}}
                 />
                 <input
                     type="text"
                     placeholder="Tagline"
                     className={styles.input}
-                    style={{marginTop: 5}}
+                    style={{marginTop: 5, fontWeight:500}}
                     ref={taglineRef}
                 />
                 <textarea

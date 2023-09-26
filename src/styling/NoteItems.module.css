@@ -12,6 +12,15 @@
 .title, .tagline, .body{
     margin-left: 10px;
     padding: 10px 0 10px;
+    color: gray;
+}
+
+.title{
+    font-weight: 700;
+}
+
+.tagline{
+    font-weight: 500;
 }
 
 .btnContainer {
