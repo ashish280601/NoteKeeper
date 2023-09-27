@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faCirclePlus, faThumbtack} from "@fortawesome/free-solid-svg-icons"
 
@@ -16,6 +16,13 @@ const NoteKeeper = ({
     const titleRef = useRef();
     const taglineRef = useRef();
     const inputRef = useRef();
+    var value = 0
+    var [ count, setCount ] = useState(value);
+
+  const handleCount =() =>{
+    setCount((cur) => cur+=1);
+    console.log("Count :",count); 
+  }
 
     useEffect(() => {
         if (!notesToUpdate) return;
@@ -92,7 +99,7 @@ const NoteKeeper = ({
                     ref={inputRef}
                     style={{marginTop: 5}}
                 />
-                <button className={styles.submit}> <FontAwesomeIcon icon={faCirclePlus} /> </button>
+                <button className={styles.submit} onSubmit={handleCount}> <FontAwesomeIcon icon={faCirclePlus} /> </button>
             </form>
             
         </div>

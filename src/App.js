@@ -12,9 +12,9 @@ function App() {
   const [notesToUpdate, setNotesToUpdate] = useState(null);
   const [isPinned, setIsPinned] = useState(true);
 
-
   function noteReducers(state, action) {
     const { formLoad } = action;
+    console.log("total",state.notes);
     switch (action.type) {
       case "ADD":
         return {
@@ -41,7 +41,7 @@ function App() {
     toast.success("Note Added Successful",{
       style:{background:"#100e10",color:"#fff",fontSize:20}
     });
-    console.log("Adding Note Successful", note);
+    console.log("Adding Note Successful", state.notes);
   };
 
   const delNote = (id) => {
