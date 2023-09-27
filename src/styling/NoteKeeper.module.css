@@ -43,6 +43,10 @@
     left: 63%;
 }
 
+.active{
+    color: black;
+}
+
 .submit:hover, .pinned:hover{
     color: rgb(115, 114, 114);
     cursor: pointer;

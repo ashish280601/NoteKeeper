@@ -3,13 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faCirclePlus, faThumbtack} from "@fortawesome/free-solid-svg-icons"
 
 import styles from "../styling/NoteKeeper.module.css";
-import NoteItems from "./NoteItems";
 
 const NoteKeeper = ({
     addNotes,
     notesToUpdate,
     updateNotes,
-    resetNotesToUpdate
+    resetNotesToUpdate,
+    isPinned,
+    pinnedNotes
 }) => {
     
     const titleRef = useRef();
@@ -64,8 +65,10 @@ const NoteKeeper = ({
 
     return(
         <div style={{position:"relative"}}>
-            <button className={styles.pinned}> <FontAwesomeIcon icon={faThumbtack} /> </button>
             <form className={styles.form} onSubmit={handleSubmit}>
+                <div className={styles.pinned} onClick={pinnedNotes}>
+                    {}<FontAwesomeIcon icon={faThumbtack} />
+                </div>
                 <input 
                     type="text"
                     placeholder="Title"
