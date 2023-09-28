@@ -31,10 +31,11 @@
     color: gray;
     background-color: #fff;
     position: absolute;
+    outline: none;
 }
 
 .submit{
-    top: 149px;
+    top: 140px;
     left: 60%;
 }
 
@@ -43,11 +44,7 @@
     left: 63%;
 }
 
-.active{
-    color: black;
-}
-
 .submit:hover, .pinned:hover{
-    color: rgb(115, 114, 114);
     cursor: pointer;
+    transform: scale(1.15);
 }

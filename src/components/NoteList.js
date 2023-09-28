@@ -1,9 +1,14 @@
 import NoteItems from "./NoteItems";
 import styles from "../styling/NoteList.module.css";
 import { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 
-const NoteList = ({ notes, delNote, changeNotesTOUpdate }) => {
+
+const NoteList = ({
+   notes,
+   delNote,
+   changeNotesTOUpdate,
+}) => {
+  
   const [currentPage, setCurrentPage] = useState(1);
   const recordsPerPage = 6;
   const lastIndex = currentPage * recordsPerPage;
@@ -42,10 +47,11 @@ const NoteList = ({ notes, delNote, changeNotesTOUpdate }) => {
           );
         })}
       </div>
+      {/* Pagination code */}
       <nav style={{margin:"auto"}}>
         <ul className="pagination">
           <li className="page-item">
-            <a href="#" className="page-link" onClick={prePage}>
+            <a href="/#" className="page-link" onClick={prePage}>
               Prev
             </a>
           </li>
@@ -55,7 +61,7 @@ const NoteList = ({ notes, delNote, changeNotesTOUpdate }) => {
               key={index}
             >
               <a
-                href="#"
+                href="/#"
                 className="page-link"
                 onClick={() => changeCPage(num)}
               >
@@ -64,7 +70,7 @@ const NoteList = ({ notes, delNote, changeNotesTOUpdate }) => {
             </li>
           ))}
           <li className="page-item">
-            <a href="#" className="page-link" onClick={nextPage}>
+            <a href="/#" className="page-link" onClick={nextPage}>
               Next
             </a>
           </li>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbtack } from "@fortawesome/free-solid-svg-icons";
+import { toast } from "react-toastify";
 
 import styles from "../styling/NoteItems.module.css"; 
 import EditImage from "../images/edit.png";
@@ -13,6 +14,22 @@ const NoteItems = ({
   changeNotesTOUpdate
 }) => {
   const [currentHoverIndex, setCurrentHoverIndex] = useState(null);
+  const [isPinned, setIsPinned] = useState(false);
+
+  const togglePin = () => {
+    setIsPinned(!isPinned);
+    console.log(isPinned);
+    if (isPinned){
+      toast.success("Note UnPinned Successful",{
+        style:{background:"#808080",color:"#fff",fontSize:20}
+      });
+    }
+    else{
+      toast.success("Note Pinned Successful",{
+        style:{background:"#808080",color:"#fff",fontSize:20}
+      });
+    }
+  }
 
   return (
     <div className={styles.itemsLists}>
@@ -40,7 +57,7 @@ const NoteItems = ({
           <div className={styles.delete} onClick={() => delNote(note.id)}>
             <img src={DeleteImage} height="30" alt="Delete" />
           </div>
-          <div className={styles.pinned}> 
+          <div className={`${styles.pinned} ${isPinned ? `${styles.pinAct}` : ''}`} onClick={togglePin}> 
             <FontAwesomeIcon icon={faThumbtack} height={30} className={styles.img}/> 
           </div>
         </div>

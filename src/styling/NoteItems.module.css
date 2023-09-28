@@ -26,6 +26,7 @@
 .btnContainer {
     height: 100%;
     align-items: center;
+    margin-left: 5px;
     gap: 12px;
     transform: translateX(110%);
     display: flex;
@@ -45,16 +46,21 @@
   }
 
   .pinned{
-    width: 1.85rem;
-    height: 1.85rem;
+    width: 3rem;
+    height: 3rem;
     border-radius: 50%;
     background-color: grey;
     color: white;
     position: relative;
   }
+
+  .pinAct{
+    background-color: black;
+    cursor: pointer;
+  }
   
   .img{
-    margin: 7px 8px; 
+    margin: 9px 10px; 
   }
 
   .edit:hover,

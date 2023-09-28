@@ -5,12 +5,14 @@ import NoteList from "./components/NoteList";
 import NoteKeeper from "./components/Notekeeper";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import "bootstrap/dist/css/bootstrap.css";
+import DummyNote from "./components/DummyNote";
 
 function App() {
 
   const [state, dispatch] = useReducer(noteReducers, {notes: []});
-  const [notesToUpdate, setNotesToUpdate] = useState(null);
-  const [isPinned, setIsPinned] = useState(true);
+  const [notesToUpdate, setNotesToUpdate] = useState('');
+  const [isNotePage, setIsNotePage] = useState(false);
 
   function noteReducers(state, action) {
     const { formLoad } = action;
@@ -41,7 +43,6 @@ function App() {
     toast.success("Note Added Successful",{
       style:{background:"#100e10",color:"#fff",fontSize:20}
     });
-    console.log("Adding Note Successful", state.notes);
   };
 
   const delNote = (id) => {
@@ -73,22 +74,27 @@ function App() {
     return true;
   }
 
-  const pinnedNotes = () => {
-    setIsPinned((current) => !current);
-    console.log(isPinned);
+  const togglePage = () => {
+    setIsNotePage(!isNotePage);
   }
 
   return (
     <>
       <Navbar />
-      <NoteKeeper
-       addNotes={addNotes}
-       notesToUpdate={notesToUpdate}
-       updateNotes={updateNotes}
-       resetNotesToUpdate={resetNotesToUpdate}
-       isPinned={isPinned}
-       pinnedNotes={pinnedNotes}
-      />
+      {
+        isNotePage
+         ?
+         <NoteKeeper
+          addNotes={addNotes}
+          notesToUpdate={notesToUpdate}
+          updateNotes={updateNotes}
+          resetNotesToUpdate={resetNotesToUpdate}
+          />
+          :
+         <DummyNote 
+          togglePage={togglePage}
+         />
+      }
       <NoteList
        notes={state.notes}
        delNote={delNote}

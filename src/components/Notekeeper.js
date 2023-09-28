@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faCirclePlus, faThumbtack} from "@fortawesome/free-solid-svg-icons"
+import {faCirclePlus} from "@fortawesome/free-solid-svg-icons"
 
 import styles from "../styling/NoteKeeper.module.css";
 
@@ -8,21 +8,12 @@ const NoteKeeper = ({
     addNotes,
     notesToUpdate,
     updateNotes,
-    resetNotesToUpdate,
-    isPinned,
-    pinnedNotes
+    resetNotesToUpdate
 }) => {
     
     const titleRef = useRef();
     const taglineRef = useRef();
     const inputRef = useRef();
-    var value = 0
-    var [ count, setCount ] = useState(value);
-
-  const handleCount =() =>{
-    setCount((cur) => cur+=1);
-    console.log("Count :",count); 
-  }
 
     useEffect(() => {
         if (!notesToUpdate) return;
@@ -49,7 +40,6 @@ const NoteKeeper = ({
                 title: titleValue,
                 tagline: taglineValue,
                 input: inputValue,
-                // time: new getHo().getMin(),
                 id: new Date().getTime(),
             };
             addNotes(noteDetails);
@@ -73,9 +63,6 @@ const NoteKeeper = ({
     return(
         <div style={{position:"relative"}}>
             <form className={styles.form} onSubmit={handleSubmit}>
-                <div className={styles.pinned} onClick={pinnedNotes}>
-                    {}<FontAwesomeIcon icon={faThumbtack} />
-                </div>
                 <input 
                     type="text"
                     placeholder="Title"
@@ -99,7 +86,7 @@ const NoteKeeper = ({
                     ref={inputRef}
                     style={{marginTop: 5}}
                 />
-                <button className={styles.submit} onSubmit={handleCount}> <FontAwesomeIcon icon={faCirclePlus} /> </button>
+                <button className={styles.submit}> <FontAwesomeIcon icon={faCirclePlus} /> </button>
             </form>
             
         </div>
