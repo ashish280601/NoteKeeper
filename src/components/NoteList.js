@@ -1,6 +1,9 @@
+import { useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faLightbulb} from "@fortawesome/free-solid-svg-icons"
+
 import NoteItems from "./NoteItems";
 import styles from "../styling/NoteList.module.css";
-import { useState } from "react";
 import Pagination from "./Pagination";
 
 
@@ -48,14 +51,22 @@ const NoteList = ({
           );
         })}
       </div>
-      {/* Pagination code */}
-      <Pagination
-        prePage={prePage}
-        currentPage={currentPage}
-        changeCPage={changeCPage}
-        nextPage={nextPage}
-        numbers={numbers}
-      />
+      {
+          notes.length > 0 
+          ? 
+          <Pagination
+            prePage={prePage}
+            currentPage={currentPage}
+            changeCPage={changeCPage}
+            nextPage={nextPage}
+            numbers={numbers}
+          /> 
+          :  
+          <div className={styles.header}>
+            <p><FontAwesomeIcon icon={faLightbulb} width="75%"  className={styles.icon}/></p>
+            <h1 className={styles.header}>Notes you add appear here</h1>
+          </div>
+        }
     </>
   );
 };

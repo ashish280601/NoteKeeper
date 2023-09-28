@@ -46,6 +46,6 @@ export default Pagination;
 const styling ={
     container:{
         marginLeft:"45%",
-        cursor:'pointer'
+        cursor:'pointer',
     }
 }
