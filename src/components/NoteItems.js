@@ -45,7 +45,7 @@ const NoteItems = ({
         <div className={styles.title}>{note.title}</div>
         <div className={styles.tagline}>{note.tagline}</div>
         <div className={styles.body}>{note.input}</div>
-        <div className={styles.time}>Edit time{note.id}</div>
+        <div className={styles.time}>{note.time}</div>
         <div 
           className={`${styles.btnContainer} ${
             currentHoverIndex === index && styles.active

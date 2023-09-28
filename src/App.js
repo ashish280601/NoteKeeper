@@ -53,10 +53,6 @@ function App() {
     console.log("Note deleted from the state", id);
   };
 
-  const resetNotesToUpdate = () => {
-    setNotesToUpdate(null);
-  }
-
   const updateNotes = (note) => {
     const notesPos = state.notes.map(function(n){
       return n.id;
@@ -72,6 +68,10 @@ function App() {
       style:{background:"#5686db",color:"#fff",fontSize:20}
     });
     return true;
+  }
+
+  const resetNotesToUpdate = () => {
+    setNotesToUpdate(null);
   }
 
   const togglePage = () => {

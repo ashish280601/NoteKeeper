@@ -1,6 +1,7 @@
 import NoteItems from "./NoteItems";
 import styles from "../styling/NoteList.module.css";
 import { useState } from "react";
+import Pagination from "./Pagination";
 
 
 const NoteList = ({
@@ -48,34 +49,13 @@ const NoteList = ({
         })}
       </div>
       {/* Pagination code */}
-      <nav style={{margin:"auto"}}>
-        <ul className="pagination">
-          <li className="page-item">
-            <a href="/#" className="page-link" onClick={prePage}>
-              Prev
-            </a>
-          </li>
-          {numbers.map((num, index) => (
-            <li
-              className={`page-item ${currentPage === num ? "active" : ""}`}
-              key={index}
-            >
-              <a
-                href="/#"
-                className="page-link"
-                onClick={() => changeCPage(num)}
-              >
-                {num}
-              </a>
-            </li>
-          ))}
-          <li className="page-item">
-            <a href="/#" className="page-link" onClick={nextPage}>
-              Next
-            </a>
-          </li>
-        </ul>
-      </nav>
+      <Pagination
+        prePage={prePage}
+        currentPage={currentPage}
+        changeCPage={changeCPage}
+        nextPage={nextPage}
+        numbers={numbers}
+      />
     </>
   );
 };

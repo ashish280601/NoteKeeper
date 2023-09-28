@@ -45,6 +45,12 @@
     transition: all 0.15s ease-in-out;
   }
 
+  .time{
+    font-size: 12px;
+    margin-left: 12em;
+    color: gray;
+  }
+
   .pinned{
     width: 3rem;
     height: 3rem;

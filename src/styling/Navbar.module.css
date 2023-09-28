@@ -2,7 +2,7 @@
     width: 100%;
     height: 10vh;
     display: inline-flex;
-    background-color: rgb(254,239,195);
+    background-color: rgba(0, 0, 0, 0.133);
 }
 
 .img{
@@ -12,10 +12,11 @@
 .heading{
     font-size: x-large;
     font-weight: 500;
+    margin-top: 2.5rem;
     margin-left: 1rem;
     color: rgba(120, 118, 118, 0.927);
 }
  .navbar:hover{
     cursor: pointer;
-    background-color: rgb(244, 231, 191);
+    background-color: rgba(0, 0, 0, 0.186);
  }

@@ -14,7 +14,11 @@ const NoteKeeper = ({
     const titleRef = useRef();
     const taglineRef = useRef();
     const inputRef = useRef();
-
+    let currDate = new Date();
+    let hrMin = currDate.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit'
+    });
     useEffect(() => {
         if (!notesToUpdate) return;
         titleRef.current.value = notesToUpdate.title;
@@ -31,6 +35,7 @@ const NoteKeeper = ({
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        titleRef.current.focus();
         const titleValue = titleRef.current.value;
         const taglineValue = taglineRef.current.value;
         const inputValue = inputRef.current.value
@@ -40,6 +45,7 @@ const NoteKeeper = ({
                 title: titleValue,
                 tagline: taglineValue,
                 input: inputValue,
+                time: hrMin,
                 id: new Date().getTime(),
             };
             addNotes(noteDetails);
